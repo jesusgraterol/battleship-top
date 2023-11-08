@@ -21,25 +21,3 @@ describe('Unit test suite (1) template', () => {
     expect(2 + 2).toBe(4);
   });
 });
-
-describe('Unit test suite (2) template', () => {
-  beforeAll(() => {
-
-  });
-
-  afterAll(() => {
-
-  });
-
-  beforeEach(() => {
-
-  });
-
-  afterEach(() => {
-
-  });
-
-  test('can calculate 2 plus 2', () => {
-    expect(2 + 2).toBe(4);
-  });
-});
