@@ -5,8 +5,8 @@
   "scripts": {
     "serve": "webpack --watch --mode=development",
     "build": "webpack --mode=production",
-    "test:unit": "jest --config=jest.test.unit.config.json",
-    "test:integration": "jest --config=jest.test.integration.config.json"
+    "test:unit": "jest --config=jest.test-unit.config.json",
+    "test:integration": "jest --config=jest.test-integration.config.json"
   },
   "repository": {
     "type": "git",

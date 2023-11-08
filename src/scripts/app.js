@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 /**
  * App Imports
  * Stylesheets, assets and scripts should be imported in the following section so they are included
