@@ -176,7 +176,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stylesheets_app_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../stylesheets/app.css */ \"./src/stylesheets/app.css\");\n/* harmony import */ var _modules_ship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/ship */ \"./src/scripts/modules/ship/index.js\");\n/**\n * App Imports\n * Stylesheets, assets and scripts should be imported in the following section so they are included\n * in the build.\n */\n\n// Stylesheets\n\n\n// Scripts\n\n\n// App Initializer\n// @TODO\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stylesheets_app_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../stylesheets/app.css */ \"./src/stylesheets/app.css\");\n/* harmony import */ var _modules_ship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/ship */ \"./src/scripts/modules/ship/index.js\");\n/* eslint-disable no-unused-vars */\n\n/**\n * App Imports\n * Stylesheets, assets and scripts should be imported in the following section so they are included\n * in the build.\n */\n\n// Stylesheets\n\n\n// Scripts\n\n\n// App Initializer\n// @TODO\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/app.js?");
 
 /***/ }),
 
