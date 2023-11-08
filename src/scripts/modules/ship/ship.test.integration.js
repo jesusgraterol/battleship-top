@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-describe('test suite template', () => {
+describe('Integration test suite template', () => {
   beforeAll(() => {
 
   });
