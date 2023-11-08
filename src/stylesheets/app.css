@@ -1,6 +1,6 @@
-/***********
- * IMPORTS *
- ***********/
+/* **********
+ * IMPORTS  *
+ ********** */
  
 
 /* Sanitizer */
@@ -29,16 +29,16 @@
  * GLOBALS  *
  ********** */
 :root {
-    --primary-color: #000000;
-    --accent-color: #161515;
+  --primary-color: #000000;
+  --accent-color: #161515;
 
-    /* --text-color: #312e2e; */
-    --success-color: #0f766e;
-    --error-color: #B71C1C;
-    --light-text-color: #4e4949;
+  --success-color: #0f766e;
+  --error-color: #B71C1C;
 
-    /* --app-background-color: #f7f1f1; */
+  --text-color: #312e2e;
+  --light-text-color: #4e4949;
 
+  --app-background-color: #f7f1f1;
 }
 
 
