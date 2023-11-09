@@ -1,17 +1,16 @@
 /**
  * Ship Class
- * This class implements the core ship functionality that handles the state of a ship.
+ * Implements the core ship functionality that handles the state of the ship instance.
  */
 class Ship {
   // the length of the ship (horizontally or vertically)
   #length;
 
   // the number of times the ship has been hit
-  #hitCount;
+  #hitCount = 0;
 
   constructor(length) {
     this.#length = length;
-    this.#hitCount = 0;
   }
 
   /**

@@ -10,7 +10,9 @@
 import '../stylesheets/app.css';
 
 // Scripts
+import Utilities from './modules/utilities';
 import Ship from './modules/ship';
+import Gameboard from './modules/gameboard';
 
 // App Initializer
 // @TODO
