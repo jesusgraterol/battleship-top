@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
+import Ship from './ship';
 
-describe('Unit test suite (1) template', () => {
+describe('Ship Essentials', () => {
   beforeAll(() => {
 
   });
@@ -17,7 +18,39 @@ describe('Unit test suite (1) template', () => {
 
   });
 
-  test('can calculate 2 plus 2', () => {
-    expect(2 + 2).toBe(4);
+  test('can create any number of ships of different sizes', () => {
+    const ship1 = new Ship(4);
+    expect(ship1.isSunk()).toBe(false);
+
+    const ship2 = new Ship(2);
+    expect(ship2.isSunk()).toBe(false);
+  });
+
+  test('can create ships and hit them until they sink', () => {
+    const ship1 = new Ship(4);
+    ship1.hit();
+    expect(ship1.isSunk()).toBe(false);
+    ship1.hit();
+    expect(ship1.isSunk()).toBe(false);
+    ship1.hit();
+    expect(ship1.isSunk()).toBe(false);
+    ship1.hit();
+    expect(ship1.isSunk()).toBe(true);
+
+    const ship2 = new Ship(2);
+    ship2.hit();
+    expect(ship2.isSunk()).toBe(false);
+    ship2.hit();
+    expect(ship2.isSunk()).toBe(true);
+  });
+
+  test('a ship that has been sunk cannot be hit again', () => {
+    const ship1 = new Ship(2);
+    ship1.hit();
+    ship1.hit();
+    expect(ship1.isSunk()).toBe(true);
+    expect(() => ship1.hit()).toThrow(/already sunk/);
+    expect(() => ship1.hit()).toThrow(/^The ship cannot be hit again as it has already sunk.$/);
+    expect(() => ship1.hit()).toThrow(new Error('The ship cannot be hit again as it has already sunk.'));
   });
 });
