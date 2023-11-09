@@ -36,21 +36,10 @@
   --error-color: #B71C1C;
 
   --text-color: #312e2e;
-  --light-text-color: #4e4949;
+  --light-text-color: #7e7474;
 
   --app-background-color: #f7f1f1;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -74,12 +63,132 @@ body {
 
 
 
+
+
 /* ****************
  * APP CONTAINER  *
  **************** */
 #app_container {
+  padding:15px;
+}
 
 
+
+/* ************
+ * APP HEADER *
+ ************ */
+#app_header {
+  text-align: center;
+}
+#app_header #app_title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 15px;
+}
+#app_header #app_subtitle {
+  color: var(--light-text-color);
+}
+
+
+
+
+
+/* *************
+ * APP CONTENT *
+ ************* */
+#app_content {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#app_content .spacer {
+  flex: 0.2;
+}
+
+#app_content .grid-container {
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+#app_content #player_grid_container.grid-container {
+  cursor: not-allowed;
+}
+
+
+
+
+/* Ships' States */
+#app_content .grid-container .ships-states {
+
+}
+
+#app_content .grid-container .ships-states p {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+#app_content .grid-container .ships-states .ships-row {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#app_content .grid-container .ships-states .ships-row .ship {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 15px;
+}
+#app_content .grid-container .ships-states .ships-row .ship:first-child {
+  margin-left: 0;
+}
+
+#app_content .grid-container .ships-states .ships-row .ship.sunk {
+  opacity: 0.3;
+}
+
+#app_content .grid-container .ships-states .ships-row .ship .part {
+  background-color: var(--primary-color);
+  margin:3px;
+  width: 10px;
+  height: 10px;
+}
+
+
+
+
+
+
+/* Grid */
+#app_content .grid-container .grid {
+  flex: 1;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+  display: grid;
+  grid-template: repeat(10, 50px) / repeat(10, 1fr);
+  gap:3px;
+}
+
+#app_content .grid-container .grid.disabled {
+  opacity: 0.5;
+}
+
+#app_content .grid-container .grid .tile {
+  background-color: white;
+/*   padding: 15px; */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app_content .grid-container #machine_grid.grid .tile {
+  cursor: pointer;
+}
+#app_content .grid-container #machine_grid.grid .tile:hover {
+  background-color: var(--app-background-color);
 }
 
 
@@ -88,28 +197,67 @@ body {
 
 
 
-/* **********************
- * APP INNER CONTAINER  *
- ********************** */
-#app_inner_container {
 
+
+
+/* ************
+ * APP FOOTER *
+ ************ */
+#app_footer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#app_footer a {
+  text-decoration: none;
+  color: var(--light-text-color);
+  margin-right: 15px;
+}
+#app_footer a:last-child {
+  margin-right: 0;
+}
+#app_footer a:hover {
+  opacity: 0.5;
 }
 
 
 
 
-/* ******
- * APP  *
- ****** */
-#app {
-
+/***************
+ * GAME RESULT *
+ ***************/
+ #game_result_container {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color:white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 2;
 }
-
-
-
-
-
-
+#game_result_container p {
+  font-size:3rem;
+  font-weight: 900;
+}
+#game_result_container .btn {
+  margin-top: 35px;
+  text-decoration: none;
+  padding:15px;
+  background-color: #1f1e1e;
+  color:white;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+#game_result_container .btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 
 
 
@@ -132,6 +280,7 @@ body {
 
 
 
+
 }
  
  
@@ -140,7 +289,10 @@ body {
  * SCREEN: B/w 1025px to 1280px
  */
 @media (min-width: 1025px) and (max-width: 1280px) {
-
+  /* APP CONTENT */
+  #app_content .spacer {
+    flex: 0.05;
+  }
 
 }
  
@@ -150,7 +302,10 @@ body {
  * SCREEN: B/w 768px to 1024px
  */
 @media (min-width: 768px) and (max-width: 1024px) {
-
+  /* APP CONTENT */
+  #app_content .spacer {
+    flex: 0.05;
+  }
 
 
 }
@@ -161,7 +316,10 @@ body {
  * SCREEN: B/w 768px to 1024px
  */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-
+  /* APP CONTENT */
+  #app_content .spacer {
+    flex: 0.05;
+  }
 
 
 
@@ -183,6 +341,54 @@ body {
  * SCREEN: 480px to lower resolution mobiles
  */
 @media (max-width: 480px) {
+  /* APP CONTAINER */
+  #app_container {
+    padding:7px;
+  }
 
 
+
+
+
+  /* APP HEADER */
+  #app_header #app_title {
+    font-size: 2.2rem;
+  }
+  #app_header #app_subtitle {
+    font-size: 0.85rem;
+  }
+
+
+
+
+
+  /* APP CONTENT */
+  #app_content {
+    margin-top: 25px;
+  }
+
+
+
+
+  /* APP GRIDS */
+  #app_content {
+    flex-direction: column;
+  }
+  #app_content .grid-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #app_content .grid-container:last-child {
+    margin-top: 50px;
+    flex-direction: column-reverse;
+  }
+  
+
+  /* Ships' States */
+  #app_content .grid-container .ships-states p {
+    text-align: center;
+  }
+  #app_content .grid-container .ships-states .ships-row {
+    justify-content: center;
+  }
 }

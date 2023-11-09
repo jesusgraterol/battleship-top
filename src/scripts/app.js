@@ -12,7 +12,12 @@ import '../stylesheets/app.css';
 // Scripts
 import Utilities from './modules/utilities';
 import Ship from './modules/ship';
-import Gameboard from './modules/gameboard';
+import Gameboard, { GameboardRenderer } from './modules/gameboard';
 
 // App Initializer
 // @TODO
+const renderer = new GameboardRenderer(true);
+renderer.renderGrid();
+
+const machineRenderer = new GameboardRenderer(false);
+machineRenderer.renderGrid();

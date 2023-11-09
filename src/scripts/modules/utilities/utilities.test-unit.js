@@ -6,40 +6,32 @@ import Utilities from './utilities';
  * Tests that cover the encoding, decoding and identification of coordinates.
  */
 describe('Coordinates Management', () => {
-  beforeAll(() => {
+  beforeAll(() => { });
 
-  });
+  afterAll(() => { });
 
-  afterAll(() => {
+  beforeEach(() => { });
 
-  });
-
-  beforeEach(() => {
-
-  });
-
-  afterEach(() => {
-
-  });
+  afterEach(() => { });
 
   test('can encode a given coordinate', () => {
-    expect(Utilities.encodeCoordinate(0, 5)).toBe('x0_y5');
-    expect(Utilities.encodeCoordinate(7, 2)).toBe('x7_y2');
+    expect(Utilities.encodeCoordinate(0, 5)).toBe('r0_c5');
+    expect(Utilities.encodeCoordinate(7, 2)).toBe('r7_c2');
   });
 
   test('can decode a given coordinate', () => {
-    expect(Utilities.decodeCoordinate('x0_y5')).toStrictEqual({ x: 0, y: 5 });
-    expect(Utilities.decodeCoordinate('x7_y2')).toStrictEqual({ x: 7, y: 2 });
+    expect(Utilities.decodeCoordinate('r0_c5')).toStrictEqual({ row: 0, column: 5 });
+    expect(Utilities.decodeCoordinate('r7_c2')).toStrictEqual({ row: 7, column: 2 });
   });
 
   test('can throw an error if a coordinate is invalid prior to decoding it', () => {
-    expect(() => Utilities.decodeCoordinate('x0-y5')).toThrow(/^The provided coordinate string is invalid and therefore it cannot be decoded.$/);
+    expect(() => Utilities.decodeCoordinate('r0-c5')).toThrow(/^The provided coordinate string is invalid and therefore it cannot be decoded.$/);
   });
 
   test('can verify if a given string is a coordinate', () => {
-    expect(Utilities.isCoordinate('x0_y5')).toBe(true);
-    expect(Utilities.isCoordinate('x0-y5')).toBe(false);
-    expect(Utilities.isCoordinate('x,ayome')).toBe(false);
+    expect(Utilities.isCoordinate('r0_c5')).toBe(true);
+    expect(Utilities.isCoordinate('r0-c5')).toBe(false);
+    expect(Utilities.isCoordinate('r,acome')).toBe(false);
   });
 });
 
@@ -48,21 +40,13 @@ describe('Coordinates Management', () => {
  * Tests that cover the generation of random values such as numbers and booleans.
  */
 describe('Random Generators', () => {
-  beforeAll(() => {
+  beforeAll(() => { });
 
-  });
+  afterAll(() => { });
 
-  afterAll(() => {
+  beforeEach(() => { });
 
-  });
-
-  beforeEach(() => {
-
-  });
-
-  afterEach(() => {
-
-  });
+  afterEach(() => { });
 
   /* ************************
    * Random Numeric Values  *

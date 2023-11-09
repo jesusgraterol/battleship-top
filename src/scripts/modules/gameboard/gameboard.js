@@ -5,12 +5,6 @@ import Utilities from '../utilities';
  * ...
  */
 class Gameboard {
-  // the size of the grid for both axes
-  #gridSize = 10;
-
-  // the grid multi-dimensional array
-  #grid;
-
   constructor() {
 
   }
@@ -24,10 +18,10 @@ class Gameboard {
 
   buildGrid() {
     const grid = [];
-    for (let x = 0; x < this.#gridSize; x += 1) {
-      grid[x] = [];
-      for (let y = 0; y < this.#gridSize; y += 1) {
-        grid[x][y] = {
+    for (let row = 0; row < 10; row += 1) {
+      grid[row] = [];
+      for (let column = 0; column < 10; column += 1) {
+        grid[row][column] = {
           state: 'PRISTINE',
           ship: undefined,
         };

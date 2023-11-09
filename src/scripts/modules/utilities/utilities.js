@@ -10,18 +10,18 @@ class Utilities {
 
   /**
    * Encodes a given coordinate into a string.
-   * @param {*} x
-   * @param {*} y
+   * @param {*} row
+   * @param {*} column
    * @returns string
    */
-  static encodeCoordinate(x, y) {
-    return `x${x}_y${y}`;
+  static encodeCoordinate(row, column) {
+    return `r${row}_c${column}`;
   }
 
   /**
-   * Decodes a given string coordinate and returns an object containing both, x and y.
+   * Decodes a given string coordinate and returns an object containing both, row and column.
    * @param {*} coordinateString
-   * @returns object { x: number, y: number }
+   * @returns object { row: number, column: number }
    */
   static decodeCoordinate(coordinateString) {
     if (!Utilities.isCoordinate(coordinateString)) {
@@ -29,8 +29,8 @@ class Utilities {
     }
     const split = coordinateString.split('_');
     return {
-      x: Number(split[0].slice(1)),
-      y: Number(split[1].slice(1)),
+      row: Number(split[0].slice(1)),
+      column: Number(split[1].slice(1)),
     };
   }
 
@@ -40,7 +40,7 @@ class Utilities {
    * @returns boolean
    */
   static isCoordinate(coordinateString) {
-    return /^x\d_y\d$/.test(coordinateString);
+    return /^r\d_c\d$/.test(coordinateString);
   }
 
   /* *************************
