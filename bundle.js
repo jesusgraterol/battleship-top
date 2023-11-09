@@ -176,7 +176,27 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stylesheets_app_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../stylesheets/app.css */ \"./src/stylesheets/app.css\");\n/* harmony import */ var _modules_ship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/ship */ \"./src/scripts/modules/ship/index.js\");\n/* eslint-disable no-unused-vars */\n\n/**\n * App Imports\n * Stylesheets, assets and scripts should be imported in the following section so they are included\n * in the build.\n */\n\n// Stylesheets\n\n\n// Scripts\n\n\n// App Initializer\n// @TODO\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stylesheets_app_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../stylesheets/app.css */ \"./src/stylesheets/app.css\");\n/* harmony import */ var _modules_utilities__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/utilities */ \"./src/scripts/modules/utilities/index.js\");\n/* harmony import */ var _modules_ship__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/ship */ \"./src/scripts/modules/ship/index.js\");\n/* harmony import */ var _modules_gameboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/gameboard */ \"./src/scripts/modules/gameboard/index.js\");\n/* eslint-disable no-unused-vars */\n\n/**\n * App Imports\n * Stylesheets, assets and scripts should be imported in the following section so they are included\n * in the build.\n */\n\n// Stylesheets\n\n\n// Scripts\n\n\n\n\n// App Initializer\n// @TODO\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/app.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/modules/gameboard/gameboard.js":
+/*!****************************************************!*\
+  !*** ./src/scripts/modules/gameboard/gameboard.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _utilities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utilities */ \"./src/scripts/modules/utilities/index.js\");\n\n\n/**\n * Gameboard Class\n * ...\n */\nclass Gameboard {\n  // the size of the grid for both axes\n  #gridSize = 10;\n\n  // the grid multi-dimensional array\n  #grid;\n\n  constructor() {\n\n  }\n\n\n\n  initialize() {\n    \n  }\n\n\n  buildGrid() {\n    const grid = [];\n    for (let x = 0; x < this.#gridSize; x += 1) {\n      grid[x] = [];\n      for (let y = 0; y < this.#gridSize; y += 1) {\n        grid[x][y] = {\n          state: 'PRISTINE',\n          ship: undefined,\n        };\n      }\n    }\n    return grid;\n  }\n}\n\n/**\n * Module Exports\n */\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Gameboard);\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/modules/gameboard/gameboard.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/modules/gameboard/index.js":
+/*!************************************************!*\
+  !*** ./src/scripts/modules/gameboard/index.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gameboard */ \"./src/scripts/modules/gameboard/gameboard.js\");\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_gameboard__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/modules/gameboard/index.js?");
 
 /***/ }),
 
@@ -196,7 +216,27 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/**\n * Ship Class\n * ...\n */\nclass Ship {\n  constructor() {\n    \n  }\n}\n\n/**\n * Module Exports\n */\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Ship);\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/modules/ship/ship.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/**\n * Ship Class\n * Implements the core ship functionality that handles the state of the ship instance.\n */\nclass Ship {\n  // the length of the ship (horizontally or vertically)\n  #length;\n\n  // the number of times the ship has been hit\n  #hitCount = 0;\n\n  constructor(length) {\n    this.#length = length;\n  }\n\n  /**\n   * Hits a ship as long as it hasn't sunk. Note that if the ship has already been sunk, it throws\n   * an error.\n   */\n  hit() {\n    if (this.isSunk()) {\n      throw new Error('The ship cannot be hit again as it has already sunk.');\n    }\n    this.#hitCount += 1;\n  }\n\n  /**\n   * Verifies if a ship has been sunk based.\n   * @returns boolean\n   */\n  isSunk() {\n    return this.#hitCount === this.#length;\n  }\n}\n\n/**\n * Module Exports\n */\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Ship);\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/modules/ship/ship.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/modules/utilities/index.js":
+/*!************************************************!*\
+  !*** ./src/scripts/modules/utilities/index.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _utilities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utilities */ \"./src/scripts/modules/utilities/utilities.js\");\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_utilities__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/modules/utilities/index.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/modules/utilities/utilities.js":
+/*!****************************************************!*\
+  !*** ./src/scripts/modules/utilities/utilities.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/**\n * Utilities Singleton\n * This class provides a toolkit that aims to bring consistency throughout modules when performing\n * common tasks.\n */\nclass Utilities {\n  /* *************************\n   * Coordinates Management  *\n   ************************* */\n\n  /**\n   * Encodes a given coordinate into a string.\n   * @param {*} x\n   * @param {*} y\n   * @returns string\n   */\n  static encodeCoordinate(x, y) {\n    return `x${x}_y${y}`;\n  }\n\n  /**\n   * Decodes a given string coordinate and returns an object containing both, x and y.\n   * @param {*} coordinateString\n   * @returns object { x: number, y: number }\n   */\n  static decodeCoordinate(coordinateString) {\n    if (!Utilities.isCoordinate(coordinateString)) {\n      throw new Error('The provided coordinate string is invalid and therefore it cannot be decoded.');\n    }\n    const split = coordinateString.split('_');\n    return {\n      x: Number(split[0].slice(1)),\n      y: Number(split[1].slice(1)),\n    };\n  }\n\n  /**\n   * Ensures that a given coordinate string is valid.\n   * @param {*} coordinateString\n   * @returns boolean\n   */\n  static isCoordinate(coordinateString) {\n    return /^x\\d_y\\d$/.test(coordinateString);\n  }\n\n  /* *************************\n   * Random Value Generators *\n   ************************* */\n\n  /**\n   * Generates a random integer within a given range. Both, min and max are inclusive.\n   * @param {*} min\n   * @param {*} max\n   * @returns number\n   */\n  static generateRandomInt(min, max) {\n    const minVal = Math.ceil(min);\n    const maxVal = Math.floor(max);\n    return Math.floor(Math.random() * (maxVal - minVal + 1) + minVal);\n  }\n\n  /**\n   * Generates a random boolean value. Sort of like flipping a coin.\n   * @returns boolean\n   */\n  static generateRandomBoolean() {\n    return Math.random() > 0.5;\n  }\n}\n\n/**\n * Module Exports\n */\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Utilities);\n\n\n//# sourceURL=webpack://battleship-top/./src/scripts/modules/utilities/utilities.js?");
 
 /***/ }),
 
