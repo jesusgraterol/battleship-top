@@ -4,7 +4,7 @@ import GameboardRenderer from './gameboard-renderer';
 
 /**
  * Gameboard Class
- * ...
+ * Handles the grid functionalities for a participant.
  */
 class Gameboard {
   // the owner of the gameboard
@@ -30,11 +30,23 @@ class Gameboard {
     this.#ships = Gameboard.#buildShipInstances();
 
     // init the grid array
-    this.#grid = this.#buildGrid();
+    this.#grid = Gameboard.#buildGrid(this.#ships);
 
     // render the gameboard
     this.#renderer.render(this.#ships, this.#grid);
   }
+
+  /* *********
+   * Getters *
+   ********* */
+  get ships() {
+    return this.#ships;
+  }
+
+  get grid() {
+    return this.#grid;
+  }
+
 
 
 
@@ -64,7 +76,7 @@ class Gameboard {
    * Grid Helpers *
    ************** */
 
-  #buildGrid() {
+  static #buildGrid(ships) {
     return Gameboard.#buildBlankGrid();
   }
 
