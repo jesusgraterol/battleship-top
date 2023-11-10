@@ -440,6 +440,7 @@ body {
 
   /* APP HEADER */
   #app_header #app_title {
+    margin-top: 0;
     font-size: 2.2rem;
   }
   #app_header #app_subtitle {

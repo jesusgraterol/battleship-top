@@ -30,7 +30,7 @@ class Gameboard {
     this.#ships = Gameboard.#buildShipInstances();
 
     // init the grid array
-    this.#grid = this.#initializeGrid();
+    this.#grid = this.#buildGrid();
 
     // render the gameboard
     this.#renderer.render(this.#ships, this.#grid);
@@ -59,11 +59,12 @@ class Gameboard {
 
 
 
+
   /* **************
    * Grid Helpers *
    ************** */
 
-  #initializeGrid() {
+  #buildGrid() {
     return Gameboard.#buildBlankGrid();
   }
 

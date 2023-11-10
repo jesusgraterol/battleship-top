@@ -54,18 +54,44 @@ class GameboardRenderer {
    * @param {*} ships
    */
   #renderShipsStates(ships) {
-    let content = '';
-    for (let shipRow of ships) {
-      for (let ship of shipRow) {
-        content += ``;
-      }
-    }
-    this.#shipsStatesEl.innerHTML = content;
+    this.#shipsStatesEl.innerHTML = ships.map(GameboardRenderer.#buildShipRow).join('');
   }
 
-  #buildShip(shipLength) {
-    
+  /**
+   * Builds the HTML content for a full row of ships based on their sizes and states.
+   * @param {*} shipRow
+   * @returns string
+   */
+  static #buildShipRow(shipRow) {
+    return `
+      <div class="ships-row">
+        ${shipRow.map(GameboardRenderer.#buildShip).join('')}
+      </div>
+    `;
   }
+
+  /**
+   * Builds a given ship's HTML content based on its length & state.
+   * @param {*} ship
+   * @returns string
+   */
+  static #buildShip(ship) {
+    return `
+      <div class="ship${ship.isSunk() ? ' sunk' : ''}">
+        ${GameboardRenderer.#buildShipParts(ship.length)}
+      </div>
+    `;
+  }
+
+  /**
+   * Returns the HTML content that comprises all the parts based on the ship's length
+   * @param {*} shipLength
+   * @returns string
+   */
+  static #buildShipParts(shipLength) {
+    return Array(shipLength).fill('<div class="part"></div>').join('');
+  }
+
 
 
 
@@ -82,7 +108,9 @@ class GameboardRenderer {
     let content = '';
     for (let row = 0; row < grid.length; row += 1) {
       for (let column = 0; column < grid[row].length; column += 1) {
-        content += `<div class="tile unknown" data-coordinate="${Utilities.encodeCoordinate(row, column)}"></div>`;
+        content += `
+          <div class="tile unknown" data-coordinate="${Utilities.encodeCoordinate(row, column)}"></div>
+        `;
       }
     }
     this.#gridEl.innerHTML = content;

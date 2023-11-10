@@ -29,141 +29,42 @@
         <p id="app_title">Battleship</p>
         <p id="app_subtitle">Destroy your enemies and dominate the sea!</p>
       </div>
+      
 
       <!-- App Content -->
       <div id="app_content">
 
         <!-- Player -->
         <div id="player_grid_container" class="grid-container">
+
           <!-- Ships' States-->
           <div class="ships-states">
-
             <p>Player</p>
-
-            <div id="player_ships_states">
-              <div class="ships-row">
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div><div class="part"></div><div class="part"></div>
-                </div>
-              </div>
-  
-              <div class="ships-row">
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div><div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div><div class="part"></div>
-                </div>
-              </div>
-  
-              <div class="ships-row">
-                <div class="ship sunk">
-                  <div class="part"></div><div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div>
-                </div>
-              </div>
-  
-              <div class="ships-row">
-                <div class="ship">
-                  <div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div>
-                </div>
-  
-                <div class="ship sunk">
-                  <div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div>
-                </div>
-              </div>
-            </div>
-
+            <div id="player_ships_states"> <!-- Handled by gameboard-renderer.js --> </div>
           </div>
 
           <!-- Grid -->
-          <div id="player_grid" class="grid"> <!-- Managed by gameboard-renderer.js --> </div>
+          <div id="player_grid" class="grid"> <!-- Handled by gameboard-renderer.js --> </div>
+
         </div>
 
         <div class="spacer"></div>
 
         <!-- Machine -->
         <div id="machine_grid_container" class="grid-container">
+
           <!-- Grid -->
-          <div id="machine_grid" class="grid"> <!-- Managed by gameboard-renderer.js --> </div>
+          <div id="machine_grid" class="grid"> <!-- Handled by gameboard-renderer.js --> </div>
 
           <!-- Ships' States-->
           <div class="ships-states">
-
             <p>Machine</p>
-
-            <div id="machine_ships_states">
-              <div class="ships-row">
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div><div class="part"></div><div class="part"></div>
-                </div>
-              </div>
-  
-              <div class="ships-row">
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div><div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div><div class="part"></div>
-                </div>
-              </div>
-  
-              <div class="ships-row">
-                <div class="ship sunk">
-                  <div class="part"></div><div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div><div class="part"></div>
-                </div>
-              </div>
-  
-              <div class="ships-row">
-                <div class="ship">
-                  <div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div>
-                </div>
-  
-                <div class="ship sunk">
-                  <div class="part"></div>
-                </div>
-  
-                <div class="ship">
-                  <div class="part"></div>
-                </div>
-              </div>
-            </div>
-
+            <div id="machine_ships_states"> <!-- Handled by gameboard-renderer.js --> </div>
           </div>
 
         </div>
 
       </div>
-
 
 
       <!-- App Footer -->
