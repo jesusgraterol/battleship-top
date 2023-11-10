@@ -6,18 +6,29 @@
  * in the build.
  */
 
+
+
+
+
 // Stylesheets
 import '../stylesheets/app.css';
+
+
+
+
 
 // Scripts
 import Utilities from './modules/utilities';
 import Ship from './modules/ship';
-import Gameboard, { GameboardRenderer } from './modules/gameboard';
+import Gameboard from './modules/gameboard';
+import Machine from './modules/machine';
+import Player from './modules/player';
+import Game from './modules/game';
+
+
+
+
 
 // App Initializer
-// @TODO
-const renderer = new GameboardRenderer(true);
-renderer.renderGrid();
-
-const machineRenderer = new GameboardRenderer(false);
-machineRenderer.renderGrid();
+const game = new Game();
+game.start();

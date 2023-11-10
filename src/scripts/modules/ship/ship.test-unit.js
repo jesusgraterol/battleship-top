@@ -1,28 +1,21 @@
-/* eslint-disable no-undef */
 import Ship from './ship';
 
 describe('Ship Essentials', () => {
-  beforeAll(() => {
+  beforeAll(() => { });
 
-  });
+  afterAll(() => { });
 
-  afterAll(() => {
+  beforeEach(() => { });
 
-  });
-
-  beforeEach(() => {
-
-  });
-
-  afterEach(() => {
-
-  });
+  afterEach(() => { });
 
   test('can create any number of ships of different sizes', () => {
     const ship1 = new Ship(4);
+    expect(ship1.length).toBe(4);
     expect(ship1.isSunk()).toBe(false);
 
     const ship2 = new Ship(2);
+    expect(ship2.length).toBe(2);
     expect(ship2.isSunk()).toBe(false);
   });
 

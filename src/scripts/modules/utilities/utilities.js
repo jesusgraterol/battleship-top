@@ -1,5 +1,5 @@
 /**
- * Utilities Singleton
+ * Utilities Class
  * This class provides a toolkit that aims to bring consistency throughout modules when performing
  * common tasks.
  */
@@ -43,6 +43,10 @@ class Utilities {
     return /^r\d_c\d$/.test(coordinateString);
   }
 
+
+
+
+
   /* *************************
    * Random Value Generators *
    ************************* */
@@ -67,6 +71,10 @@ class Utilities {
     return Math.random() > 0.5;
   }
 }
+
+
+
+
 
 /**
  * Module Exports

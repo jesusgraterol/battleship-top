@@ -1,26 +1,20 @@
-/* eslint-disable no-undef */
 import Gameboard from './gameboard';
 
-describe('Integration test suite template', () => {
-  beforeAll(() => {
+// Mock the renderer so no DOM errors are thrown
+jest.mock('./gameboard-renderer');
 
-  });
+describe('Gameboard Essentials', () => {
+  beforeAll(() => { });
 
-  afterAll(() => {
+  afterAll(() => { });
 
-  });
+  beforeEach(() => { });
 
-  beforeEach(() => {
-
-  });
-
-  afterEach(() => {
-
-  });
+  afterEach(() => { });
 
   test('can initialize a gameboard instance with a proper grid', () => {
-    const gb = new Gameboard();
-    const grid = gb.buildGrid();
+    const gb = new Gameboard(false);
+    /* const grid = gb.buildGrid(); */
     /* console.log(grid); */
     expect(2 + 2).toBe(4);
   });

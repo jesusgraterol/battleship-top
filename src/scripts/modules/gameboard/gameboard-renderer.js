@@ -2,39 +2,96 @@ import Utilities from '../utilities';
 
 /**
  * Gameboard Renderer Class
- * ...
+ * Handles the rendering of all the elements that belong to the Gameboard.
  */
 class GameboardRenderer {
+  // the owner of the board
+  #isPlayer;
+
+  // the instance of the ships' states element
+  #shipsStatesEl;
+
   // the instance of the grid element
   #gridEl;
 
   constructor(isPlayer) {
-    // initialize the instance of the grid based on the owner
-    this.#gridEl = isPlayer
+    // initialize the owner of the board
+    this.#isPlayer = isPlayer;
+
+    // initialize the instance of the ships' states element based on the owner
+    this.#shipsStatesEl = this.#isPlayer
+      ? document.getElementById('player_ships_states')
+      : document.getElementById('machine_ships_states');
+
+    // initialize the instance of the grid element based on the owner
+    this.#gridEl = this.#isPlayer
       ? document.getElementById('player_grid')
       : document.getElementById('machine_grid');
   }
 
-  renderGrid() {
+  /**
+   * Renders all the gameboard elements based on the latest state.
+   * @param {*} ships
+   * @param {*} grid
+   */
+  render(ships, grid) {
+    // Render the ships' states
+    this.#renderShipsStates(ships);
+
+    // Render the grid
+    this.#renderGrid(grid);
+  }
+
+
+
+
+  /* ************************
+   * Ships' States Renderer *
+   ************************ */
+
+  /**
+   * Renders the ships based on their current states.
+   * @param {*} ships
+   */
+  #renderShipsStates(ships) {
     let content = '';
-    for (let row = 0; row < 10; row += 1) {
-      for (let column = 0; column < 10; column += 1) {
-        /* content += `<div class='tile'><p>${Utilities.encodeCoordinate(row, column)}</p></div>`; */
-        if (column % 2 === 0 && row % 2 === 0) {
-          content += `<div class='tile'><span class="md-icon">destruction</span></div>`;
-        } else {
-          if (column % 3 === 0) {
-            content += `<div class='tile'><span class="md-icon">blur_on</span></div>`;
-          } else {
-            content += `<div class='tile'></div>`;
-          }
-        }
-        /* content += `<div class='tile'><span class="md-icon">destruction</span></div>`; */
+    for (let shipRow of ships) {
+      for (let ship of shipRow) {
+        content += ``;
+      }
+    }
+    this.#shipsStatesEl.innerHTML = content;
+  }
+
+  #buildShip(shipLength) {
+    
+  }
+
+
+
+
+  /* ***************
+   * Grid Renderer *
+   *************** */
+
+  /**
+   * Renders the grid based on the current state.
+   * @param {*} grid
+   */
+  #renderGrid(grid) {
+    let content = '';
+    for (let row = 0; row < grid.length; row += 1) {
+      for (let column = 0; column < grid[row].length; column += 1) {
+        content += `<div class="tile unknown" data-coordinate="${Utilities.encodeCoordinate(row, column)}"></div>`;
       }
     }
     this.#gridEl.innerHTML = content;
   }
 }
+
+
+
+
 
 /**
  * Module Exports

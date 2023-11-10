@@ -1,7 +1,4 @@
-
-
-
-
+import Machine from './machine';
 
 describe('Integration test suite template', () => {
   beforeAll(() => { });
@@ -12,7 +9,7 @@ describe('Integration test suite template', () => {
 
   afterEach(() => { });
 
-  test('can calculate 3 plus 3', () => {
-    expect(3 + 3).toBe(6);
+  test('can calculate 2 plus 2', () => {
+    expect(2 + 2).toBe(4);
   });
 });

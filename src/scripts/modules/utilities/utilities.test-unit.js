@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import Utilities from './utilities';
 
 /**
@@ -35,11 +34,15 @@ describe('Coordinates Management', () => {
   });
 });
 
+
+
+
+
 /**
- * Random Generators
- * Tests that cover the generation of random values such as numbers and booleans.
+ * Random Number Generators
+ * Tests that cover the generation of random number values.
  */
-describe('Random Generators', () => {
+describe('Random Number Generators', () => {
   beforeAll(() => { });
 
   afterAll(() => { });
@@ -47,10 +50,6 @@ describe('Random Generators', () => {
   beforeEach(() => { });
 
   afterEach(() => { });
-
-  /* ************************
-   * Random Numeric Values  *
-   ************************ */
 
   test('can generate a random integer respecting the given range (1)', () => {
     const randomInt = Utilities.generateRandomInt(0, 9);
@@ -65,10 +64,23 @@ describe('Random Generators', () => {
     expect(randomInt).toBeLessThanOrEqual(2000);
     expect(Number.isInteger(randomInt)).toBeTruthy();
   });
+});
 
-  /* ************************
-   * Random Boolean Values  *
-   ************************ */
+
+
+
+/**
+ * Random Boolean Generators
+ * Tests that cover the generation of random boolean values.
+ */
+describe('Random Boolean Generators', () => {
+  beforeAll(() => { });
+
+  afterAll(() => { });
+
+  beforeEach(() => { });
+
+  afterEach(() => { });
 
   test('can generate a random boolean', () => {
     let trueCount = 0;

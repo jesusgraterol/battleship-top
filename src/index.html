@@ -36,64 +36,57 @@
         <!-- Player -->
         <div id="player_grid_container" class="grid-container">
           <!-- Ships' States-->
-          <div id="player_ships_states" class="ships-states">
+          <div class="ships-states">
 
             <p>Player</p>
-            <div class="ships-row">
-              <div class="ship">
-                <div class="part"></div>
-                <div class="part"></div>
-                <div class="part"></div>
-                <div class="part"></div>
-              </div>
-            </div>
 
-            <div class="ships-row">
-              <div class="ship">
-                <div class="part"></div>
-                <div class="part"></div>
-                <div class="part"></div>
+            <div id="player_ships_states">
+              <div class="ships-row">
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div><div class="part"></div><div class="part"></div>
+                </div>
               </div>
-
-              <div class="ship">
-                <div class="part"></div>
-                <div class="part"></div>
-                <div class="part"></div>
+  
+              <div class="ships-row">
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div><div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div><div class="part"></div>
+                </div>
               </div>
-            </div>
-
-            <div class="ships-row">
-              <div class="ship sunk">
-                <div class="part"></div>
-                <div class="part"></div>
+  
+              <div class="ships-row">
+                <div class="ship sunk">
+                  <div class="part"></div><div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div>
+                </div>
               </div>
-
-              <div class="ship">
-                <div class="part"></div>
-                <div class="part"></div>
-              </div>
-
-              <div class="ship">
-                <div class="part"></div>
-                <div class="part"></div>
-              </div>
-            </div>
-
-            <div class="ships-row">
-              <div class="ship">
-                <div class="part"></div>
-              </div>
-
-              <div class="ship">
-                <div class="part"></div>
-              </div>
-
-              <div class="ship sunk">
-                <div class="part"></div>
-              </div>
-
-              <div class="ship">
-                <div class="part"></div>
+  
+              <div class="ships-row">
+                <div class="ship">
+                  <div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div>
+                </div>
+  
+                <div class="ship sunk">
+                  <div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div>
+                </div>
               </div>
             </div>
 
@@ -111,64 +104,57 @@
           <div id="machine_grid" class="grid"> <!-- Managed by gameboard-renderer.js --> </div>
 
           <!-- Ships' States-->
-          <div id="machine_ships_states" class="ships-states">
+          <div class="ships-states">
 
             <p>Machine</p>
-            <div class="ships-row">
-              <div class="ship sunk">
-                <div class="part"></div>
-                <div class="part"></div>
-                <div class="part"></div>
-                <div class="part"></div>
-              </div>
-            </div>
 
-            <div class="ships-row">
-              <div class="ship">
-                <div class="part"></div>
-                <div class="part"></div>
-                <div class="part"></div>
+            <div id="machine_ships_states">
+              <div class="ships-row">
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div><div class="part"></div><div class="part"></div>
+                </div>
               </div>
-
-              <div class="ship sunk">
-                <div class="part"></div>
-                <div class="part"></div>
-                <div class="part"></div>
+  
+              <div class="ships-row">
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div><div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div><div class="part"></div>
+                </div>
               </div>
-            </div>
-
-            <div class="ships-row">
-              <div class="ship">
-                <div class="part"></div>
-                <div class="part"></div>
+  
+              <div class="ships-row">
+                <div class="ship sunk">
+                  <div class="part"></div><div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div><div class="part"></div>
+                </div>
               </div>
-
-              <div class="ship">
-                <div class="part"></div>
-                <div class="part"></div>
-              </div>
-
-              <div class="ship">
-                <div class="part"></div>
-                <div class="part"></div>
-              </div>
-            </div>
-
-            <div class="ships-row">
-              <div class="ship">
-                <div class="part"></div>
-              </div>
-
-              <div class="ship">
-                <div class="part"></div>
-              </div>
-
-              <div class="ship">
-                <div class="part"></div>
-              </div>
-
-              <div class="ship">
-                <div class="part"></div>
+  
+              <div class="ships-row">
+                <div class="ship">
+                  <div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div>
+                </div>
+  
+                <div class="ship sunk">
+                  <div class="part"></div>
+                </div>
+  
+                <div class="ship">
+                  <div class="part"></div>
+                </div>
               </div>
             </div>
 
@@ -193,9 +179,9 @@
     </div>
 
 
-      <!-- Game Result -->
+    <!-- Game Result -->
     <div id="game_result_container">
-      <p id="game_result_title"><!-- Handled by app.js YOU WIN!|YOU LOSE!-->YOU LOSE!</p>
+      <p id="game_result_title"><!-- Handled by game.js --></p>
       <button id="play_again_button" class="btn">PLAY AGAIN</button>
     </div>
 

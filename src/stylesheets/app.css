@@ -30,7 +30,7 @@
  ********** */
 :root {
   --primary-color: #000000;
-  --accent-color: #161515;
+  --accent-color: #696868;
 
   --success-color: #0f766e;
   --error-color: #B71C1C;
@@ -83,7 +83,7 @@ body {
 #app_header #app_title {
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 15px;
+  margin-top: 35px;
 }
 #app_header #app_subtitle {
   color: var(--light-text-color);
@@ -114,14 +114,14 @@ body {
   gap: 15px;
 }
 
-#app_content #player_grid_container.grid-container {
+/* #app_content #player_grid_container.grid-container {
   cursor: not-allowed;
-}
+} */
 
 
 
 
-/* Ships' States */
+/* SHIPS' STATES */
 #app_content .grid-container .ships-states {
 
 }
@@ -131,12 +131,14 @@ body {
   font-weight: bold;
 }
 
+/* Ships Row */
 #app_content .grid-container .ships-states .ships-row {
   margin-top: 15px;
   display: flex;
   justify-content: flex-start;
 }
 
+/* Ship */
 #app_content .grid-container .ships-states .ships-row .ship {
   display: flex;
   justify-content: flex-start;
@@ -146,23 +148,22 @@ body {
   margin-left: 0;
 }
 
-#app_content .grid-container .ships-states .ships-row .ship.sunk {
-  opacity: 0.3;
-}
-
+/* Ship Part */
 #app_content .grid-container .ships-states .ships-row .ship .part {
   background-color: var(--primary-color);
   margin:3px;
   width: 10px;
   height: 10px;
 }
+#app_content .grid-container .ships-states .ships-row .ship.sunk .part {
+  background-color: var(--accent-color);
+}
 
 
 
 
 
-
-/* Grid */
+/* GRID */
 #app_content .grid-container .grid {
   flex: 1;
   box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
@@ -171,29 +172,63 @@ body {
   gap:3px;
 }
 
-#app_content .grid-container .grid.disabled {
-  opacity: 0.5;
-}
 
+/* GRID TILES */
 #app_content .grid-container .grid .tile {
-  background-color: white;
-/*   padding: 15px; */
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: not-allowed;
 }
 
-#app_content .grid-container #machine_grid.grid .tile {
+
+/* Unknown */
+#app_content .grid-container .grid .tile.unknown {
+  background-color: white;
+}
+#app_content .grid-container #machine_grid.grid .tile.unknown {
   cursor: pointer;
 }
-#app_content .grid-container #machine_grid.grid .tile:hover {
+#app_content .grid-container #machine_grid.grid .tile.unknown:hover {
   background-color: var(--app-background-color);
+  cursor: pointer;
+}
+
+/* Empty */
+#app_content .grid-container .grid .tile.empty {
+  background-color: var(--app-background-color);
+  cursor: not-allowed;
+}
+#app_content .grid-container .grid .tile.empty::before {
+  content: "●";
+}
+
+/* Derived Empty */
+#app_content .grid-container .grid .tile.empty.derived {
+  opacity: 0.3;
+}
+
+/* Hit */
+#app_content .grid-container .grid .tile.hit {
+  background-color: var(--accent-color);
+  color:white;
+  cursor: not-allowed;
+}
+
+
+/* Part (Only players) */
+#app_content .grid-container #player_grid.grid .tile.part {
+  background-color: var(--primary-color);
 }
 
 
 
 
+/* Disabled Grid Container */
+#app_content .grid-container.disabled {
+  opacity: 0.5;
+}
 
 
 
@@ -206,6 +241,7 @@ body {
 #app_footer {
   text-align: center;
   margin-top: 50px;
+  font-size:0.85rem;
 }
 
 #app_footer a {
@@ -223,6 +259,7 @@ body {
 
 
 
+
 /***************
  * GAME RESULT *
  ***************/
@@ -234,12 +271,13 @@ body {
   height:100%;
   background-color: rgba(0, 0, 0, 0.8);
   color:white;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: none;
   z-index: 2;
+  animation: fadein;
+  animation-duration: 0.5s;
 }
 #game_result_container p {
   font-size:3rem;
@@ -307,7 +345,33 @@ body {
     flex: 0.05;
   }
 
+  /* APP CONTENT */
+  #app_content {
+    margin-top: 25px;
+    flex-direction: column;
+  }
+  #app_content .grid-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #app_content .grid-container:last-child {
+    margin-top: 50px;
+    flex-direction: column-reverse;
+  }
 
+  /* Grid */
+  #app_content .grid-container .grid {
+    grid-template: repeat(10, 45px) / repeat(10, 45px);
+  }
+  
+
+  /* Ships' States */
+  #app_content .grid-container .ships-states p {
+    text-align: center;
+  }
+  #app_content .grid-container .ships-states .ships-row {
+    justify-content: center;
+  }
 }
  
  
@@ -321,8 +385,6 @@ body {
     flex: 0.05;
   }
 
-
-
 }
  
  
@@ -331,7 +393,33 @@ body {
  * SCREEN: B/w 481px to 767px
  */
 @media (min-width: 481px) and (max-width: 767px) {
+  /* APP CONTENT */
+  #app_content {
+    margin-top: 25px;
+    flex-direction: column;
+  }
+  #app_content .grid-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #app_content .grid-container:last-child {
+    margin-top: 50px;
+    flex-direction: column-reverse;
+  }
 
+  /* Grid */
+  #app_content .grid-container .grid {
+    grid-template: repeat(10, 35px) / repeat(10, 35px);
+  }
+  
+
+  /* Ships' States */
+  #app_content .grid-container .ships-states p {
+    text-align: center;
+  }
+  #app_content .grid-container .ships-states .ships-row {
+    justify-content: center;
+  }
 }
 
  
@@ -365,13 +453,6 @@ body {
   /* APP CONTENT */
   #app_content {
     margin-top: 25px;
-  }
-
-
-
-
-  /* APP GRIDS */
-  #app_content {
     flex-direction: column;
   }
   #app_content .grid-container {
@@ -381,6 +462,11 @@ body {
   #app_content .grid-container:last-child {
     margin-top: 50px;
     flex-direction: column-reverse;
+  }
+
+  /* Grid */
+  #app_content .grid-container .grid {
+    grid-template: repeat(10, 25px) / repeat(10, 25px);
   }
   
 

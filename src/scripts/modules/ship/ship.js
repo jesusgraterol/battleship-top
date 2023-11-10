@@ -13,6 +13,20 @@ class Ship {
     this.#length = length;
   }
 
+  /* *********
+   * Getters *
+   ********* */
+  get length() {
+    return this.#length;
+  }
+
+
+
+
+  /* *******
+   * State *
+   ******* */
+
   /**
    * Hits a ship as long as it hasn't sunk. Note that if the ship has already been sunk, it throws
    * an error.

@@ -16,11 +16,18 @@ module.exports = {
         sourceType: 'script',
       },
     },
+    {
+      files: ['*.test-unit.js', '*.test-integration.js', '*.spec-unit.js', '*.spec-integration.js'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
   rules: {
+    'no-multiple-empty-lines': ['error', { max: 5, maxEOF: 0 }],
   },
 };
