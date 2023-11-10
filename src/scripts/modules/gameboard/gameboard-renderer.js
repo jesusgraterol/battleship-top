@@ -105,15 +105,44 @@ class GameboardRenderer {
    * @param {*} grid
    */
   #renderGrid(grid) {
-    let content = '';
-    for (let row = 0; row < grid.length; row += 1) {
-      for (let column = 0; column < grid[row].length; column += 1) {
-        content += `
-          <div class="tile unknown" data-coordinate="${Utilities.encodeCoordinate(row, column)}"></div>
-        `;
-      }
-    }
-    this.#gridEl.innerHTML = content;
+    this.#gridEl.innerHTML = grid.map(
+      (column, rowIndex) => GameboardRenderer.#buildGridRow(rowIndex, column),
+    ).join('');
+  }
+
+  /**
+   * Builds the HTML content for a grid row.
+   * @param {*} row
+   * @param {*} columns
+   * @returns string
+   */
+  static #buildGridRow(rowIndex, columns) {
+    return columns.reduce(
+      (accum, currentValue, columnIndex) => accum + GameboardRenderer.#buildGridTile(
+        rowIndex,
+        columnIndex,
+        currentValue,
+      ),
+      '',
+    );
+  }
+
+  /**
+   * Builds the HTML content for a grid tile based on the current coordinates and state.
+   * @param {*} rowIndex
+   * @param {*} columnIndex
+   * @param {*} tileObj
+   * @returns string
+   */
+  static #buildGridTile(rowIndex, columnIndex, tileObj) {
+    const classList = 'tile unknown';
+    const coordinates = Utilities.encodeCoordinate(rowIndex, columnIndex);
+    const innerContent = '';
+    return `
+      <div class="${classList}" data-coordinates="${coordinates}">
+        ${innerContent}
+      </div>
+    `;
   }
 }
 
