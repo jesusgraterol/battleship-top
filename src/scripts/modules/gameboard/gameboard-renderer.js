@@ -135,14 +135,52 @@ class GameboardRenderer {
    * @returns string
    */
   static #buildGridTile(rowIndex, columnIndex, tileObj) {
-    const classList = 'tile unknown';
-    const coordinates = Utilities.encodeCoordinate(rowIndex, columnIndex);
-    const innerContent = '';
+    const md = GameboardRenderer.#buildGridTileMetadata(rowIndex, columnIndex, tileObj);
     return `
-      <div class="${classList}" data-coordinates="${coordinates}">
-        ${innerContent}
+      <div class="${md.classList}" data-coordinates="${md.coordinates}">
+        ${md.innerContent}
       </div>
     `;
+  }
+
+  /**
+   * Grid Tile Metadata
+   */
+
+  /**
+   * Builds the metadata object for a given tile based on its state and coordinates.
+   * @param {*} rowIndex
+   * @param {*} columnIndex
+   * @param {*} tileObj
+   * @returns object -> { classList: string, coordinates: string, innerContent: string }
+   */
+  static #buildGridTileMetadata(rowIndex, columnIndex, tileObj) {
+    return {
+      classList: GameboardRenderer.#buildTileClassList(tileObj),
+      coordinates: Utilities.encodeCoordinate(rowIndex, columnIndex),
+      innerContent: GameboardRenderer.#buildTileInnerContent(tileObj),
+    };
+  }
+
+  /**
+   * Builds the list of CSS Classes that will be applied to the tile element.
+   * @param {*} tileObj
+   * @returns string
+   */
+  static #buildTileClassList(tileObj) {
+    let classList = 'tile';
+    if (tileObj.state === 'UNKNOWN') classList += ' unknown';
+    if (tileObj.ship) classList += ' part';
+    return classList;
+  }
+
+  /**
+   * Builds the content that will be inserted into the tile. Keep in mind it can be an empty string.
+   * @param {*} tileObj
+   * @returns string
+   */
+  static #buildTileInnerContent(tileObj) {
+    return '';
   }
 }
 

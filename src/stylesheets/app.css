@@ -218,10 +218,12 @@ body {
 
 
 /* Part (Only players) */
-#app_content .grid-container #player_grid.grid .tile.part {
+/* #app_content .grid-container #player_grid.grid .tile.part {
+  background-color: var(--primary-color);
+} */
+#app_content .grid-container .grid .tile.part {
   background-color: var(--primary-color);
 }
-
 
 
 

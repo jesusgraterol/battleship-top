@@ -14,6 +14,11 @@ describe('Gameboard Instantiation', () => {
 
   test('can instantiate a gameboard and build the ships correctly', () => {
     const board = new Gameboard(false);
+
+    // there should be 10 ships in total
+    expect(board.ships.flat().length).toBe(10);
+
+    // evaluate row by row and ship by ship
     expect(board.ships.length).toBe(4);
 
     expect(board.ships[0].length).toBe(1);
@@ -35,5 +40,11 @@ describe('Gameboard Instantiation', () => {
     expect(board.ships[3][3].length).toBe(1);
   });
 
-  
+  test('can instantiate a gameboard and build a complete grid (10 rows x 10 columns)', () => {
+    const board = new Gameboard(false);
+    expect(board.grid.length).toBe(10);
+    board.grid.forEach((cols) => {
+      expect(cols.length).toBe(10);
+    });
+  });
 });

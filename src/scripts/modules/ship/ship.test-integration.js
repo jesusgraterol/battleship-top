@@ -9,7 +9,7 @@ describe('Integration test suite template', () => {
 
   afterEach(() => { });
 
-  test('can calculate 1 plus 1', () => {
+  test.skip('can calculate 1 plus 1', () => {
     expect(1 + 1).toBe(2);
   });
 });
