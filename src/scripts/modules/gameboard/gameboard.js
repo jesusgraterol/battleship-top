@@ -1,4 +1,3 @@
-import Utilities from '../utilities';
 import GameboardRenderer from './gameboard-renderer';
 import Ship from '../ship';
 import Grid from '../grid';
@@ -54,14 +53,26 @@ class Gameboard {
    * Attacks Management *
    ******************** */
 
+  /**
+   * Handles an attack issued by the opponent. Updates the state of the grid, re-renders the DOM
+   * and returns the attack result.
+   * @param {*} row
+   * @param {*} column
+   * @returns object -> { shipHit: boolean, shipSunk: boolean, gameboardDestroyed: boolean }
+   */
   receiveAttack(row, column) {
     // process the attack
     const { shipHit, shipSunk } = this.#grid.processAttack(row, column);
 
-    // if a ship was sunk, ensure the gameboard is not yet destroyed
-    if (shipSunk) {
-      // @TODO
-    }
+    // render the gameboard
+    this.#renderer.render(this.#ships, this.#grid.state);
+
+    // finally, return the result of the attack
+    return {
+      shipHit,
+      shipSunk,
+      gameboardDestroyed: shipSunk ? this.#isGameboardDestroyed() : false,
+    };
   }
 
   /**
@@ -72,6 +83,14 @@ class Gameboard {
    */
   canReceiveAttack(row, column) {
     return this.#grid.state[row][column].state === 'UNKNOWN';
+  }
+
+  /**
+   * Verifies if the gameboard is fully destroyed (all ships).
+   * @returns boolean
+   */
+  #isGameboardDestroyed() {
+    return this.#ships.flat().every((ship) => ship.isSunk());
   }
 }
 
