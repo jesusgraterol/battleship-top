@@ -32,14 +32,14 @@ class GameboardRenderer {
   /**
    * Renders all the gameboard elements based on the latest state.
    * @param {*} ships
-   * @param {*} grid
+   * @param {*} gridState
    */
-  render(ships, grid) {
+  render(ships, gridState) {
     // Render the ships' states
     this.#renderShipsStates(ships);
 
     // Render the grid
-    this.#renderGrid(grid);
+    this.#renderGrid(gridState);
   }
 
 
@@ -102,10 +102,10 @@ class GameboardRenderer {
 
   /**
    * Renders the grid based on the current state.
-   * @param {*} grid
+   * @param {*} gridState
    */
-  #renderGrid(grid) {
-    this.#gridEl.innerHTML = grid.map(
+  #renderGrid(gridState) {
+    this.#gridEl.innerHTML = gridState.map(
       (column, rowIndex) => GameboardRenderer.#buildGridRow(rowIndex, column),
     ).join('');
   }

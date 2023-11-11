@@ -1,3 +1,4 @@
+import Utilities from '../utilities';
 import Ship from './ship';
 
 describe('Ship Essentials', () => {
@@ -8,6 +9,13 @@ describe('Ship Essentials', () => {
   beforeEach(() => { });
 
   afterEach(() => { });
+
+  test('can create a valid ship', () => {
+    const ship1 = new Ship(3);
+    expect(Utilities.validateID(ship1.id)).toBe(true);
+    expect(ship1.length).toBe(3);
+    expect(ship1.isSunk()).toBe(false);
+  });
 
   test('can create any number of ships of different sizes', () => {
     const ship1 = new Ship(4);

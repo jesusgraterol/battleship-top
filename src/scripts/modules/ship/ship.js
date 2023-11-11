@@ -1,8 +1,13 @@
+import Utilities from '../utilities';
+
 /**
  * Ship Class
  * Implements the core ship functionality that handles the state of the ship instance.
  */
 class Ship {
+  // the identifier of the ship
+  #id;
+
   // the length of the ship (horizontally or vertically)
   #length;
 
@@ -10,12 +15,20 @@ class Ship {
   #hitCount = 0;
 
   constructor(length) {
+    // init the id
+    this.#id = Utilities.generateID();
+
+    // init the size
     this.#length = length;
   }
 
   /* *********
    * Getters *
    ********* */
+  get id() {
+    return this.#id;
+  }
+
   get length() {
     return this.#length;
   }
