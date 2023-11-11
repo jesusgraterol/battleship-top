@@ -96,6 +96,22 @@ class Utilities {
   static generateRandomBoolean() {
     return Math.random() > 0.5;
   }
+
+
+
+
+  /* **************
+   * Misc Helpers *
+   ************** */
+
+  /**
+   * Creates a fake promise that resolves in the number of milliseconds provided.
+   * @param {*} ms
+   * @returns Promise<void>
+   */
+  static asyncDelay(ms) {
+    return new Promise((resolve) => { setTimeout(() => { resolve(); }, ms); });
+  }
 }
 
 
