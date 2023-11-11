@@ -6,6 +6,9 @@ import Player from '../player';
  * ...
  */
 class Game {
+  // the element of the machine's grid container
+  #machineGridContainerEl;
+
   // the participant instances
   #machine;
 
@@ -19,6 +22,10 @@ class Game {
   #playAgainButtonEl;
 
   constructor() {
+    // initiailize and subscribe to the machine's click events
+    this.#machineGridContainerEl = document.getElementById('machine_grid_container');
+    this.#machineGridContainerEl.addEventListener('click', (evt) => this.#onMachineGridClick(evt));
+
     // initialize the game result elements and subscribe to the play again button
     this.#gameResultContainerEl = document.getElementById('game_result_container');
     this.#gameResultTitleEl = document.getElementById('game_result_title');
@@ -37,6 +44,22 @@ class Game {
     // initialize the machine and the player
     this.#machine = new Machine();
     this.#player = new Player();
+  }
+
+
+
+
+  /* *************************
+   * Player Input Management *
+   ************************* */
+
+  /**
+   * Triggers whenever the player clicks on the machine's grid container. It ensures it is the
+   * player's turn and also validates the input before proceeding.
+   * @param {*} evt
+   */
+  #onMachineGridClick(evt) {
+    console.log(evt.target.getAttribute('data-coordinates'));
   }
 
 

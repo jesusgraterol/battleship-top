@@ -19,7 +19,6 @@ class Gameboard {
   constructor(isPlayer) {
     // init the renderer
     this.#renderer = new GameboardRenderer(isPlayer);
-    /* this.#renderer = new GameboardRenderer(this.#isPlayer); */
 
     // init the ship instances
     this.#ships = Gameboard.#buildShipInstances();
@@ -157,35 +156,70 @@ class Gameboard {
    * - Overflow the grid
    * - Overlap another ship part
    * - Does not have adjacent ships
-   * @param {*} coordObj
+   * @param {*} coordinates
    * @param {*} grid
    * @returns boolean
    */
-  static #isShipCoordinateValid(coord, grid) {
-    return (coord.row >= 0 && coord.row <= 9)
-            && (coord.column >= 0 && coord.column <= 9)
-            && grid[coord.row][coord.column].ship === undefined
-            && !Gameboard.#hasAdjacentShip(coord.row, coord.column, grid);
+  static #isShipCoordinateValid(coordinates, grid) {
+    return (coordinates.row >= 0 && coordinates.row <= 9)
+            && (coordinates.column >= 0 && coordinates.column <= 9)
+            && grid[coordinates.row][coordinates.column].ship === undefined
+            && !Gameboard.#hasAdjacentShip(coordinates, grid);
   }
 
   /**
    * Verifies if there is a ship right next to the given coordinate. The purpose of this
    * functionality is to recreate the following implementation of the game:
    * http://en.battleship-game.org/
-   * @param {*} r
-   * @param {*} c
+   * @param {*} coordinates
    * @param {*} grid
    * @returns booolean
    */
-  static #hasAdjacentShip(r, c, grid) {
-    return (grid[r - 1] && grid[r - 1][c].ship) // ^
+  static #hasAdjacentShip(coordinates, grid) {
+/*     return (grid[r - 1] && grid[r - 1][c].ship) // ^
           || (grid[r - 1] && grid[r - 1][c + 1] && grid[r - 1][c + 1].ship) // >^
           || (grid[r][c + 1] && grid[r][c + 1].ship) // >
           || (grid[r + 1] && grid[r + 1][c + 1] && grid[r + 1][c + 1].ship) // >v
           || (grid[r + 1] && grid[r + 1][c].ship) // v
           || (grid[r + 1] && grid[r + 1][c - 1] && grid[r + 1][c - 1].ship) // <v
           || (grid[r][c - 1] && grid[r][c - 1].ship) // <
-          || (grid[r - 1] && grid[r - 1][c - 1] && grid[r - 1][c - 1].ship); // <^
+          || (grid[r - 1] && grid[r - 1][c - 1] && grid[r - 1][c - 1].ship); // <^ */
+    return Gameboard.#getAdjacentCoordinates(coordinates.row, coordinates.column, grid).some(
+      (coordinate) => grid[coordinate.row][coordinate.column].ship !== undefined,
+    );
+  }
+
+
+
+
+  /* *******************
+   * Grid Misc Helpers *
+   ******************* */
+
+
+  /**
+   * Given a coordinate and a grid (any state), it returns the list of valid adjacent coordinates.
+   * @param {*} r
+   * @param {*} c
+   * @param {*} g
+   * @returns object -> Array<{ row: number, column: number }>
+   */
+  static #getAdjacentCoordinates(r, c, g) {
+    // init the list coordinates
+    const adjacent = [];
+
+    // build the list of valid adjacent coordinates
+    if (g[r - 1]) adjacent.push({ row: r - 1, column: c }); // ^
+    if (g[r - 1] && g[r - 1][c + 1]) adjacent.push({ row: r - 1, column: c + 1 }); // >^
+    if (g[r][c + 1]) adjacent.push({ row: r, column: c + 1 }); // >
+    if (g[r + 1] && g[r + 1][c + 1]) adjacent.push({ row: r + 1, column: c + 1 }); // >v
+    if (g[r + 1]) adjacent.push({ row: r + 1, column: c }); // v
+    if (g[r + 1] && g[r + 1][c - 1]) adjacent.push({ row: r + 1, column: c - 1 }); // <v
+    if (g[r][c - 1]) adjacent.push({ row: r, column: c - 1 }); // <
+    if (g[r - 1] && g[r - 1][c - 1]) adjacent.push({ row: r - 1, column: c - 1 }); // <^
+
+    // finally, return them
+    return adjacent;
   }
 }
 

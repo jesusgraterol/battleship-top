@@ -12,7 +12,7 @@ describe('Gameboard Instantiation', () => {
 
   afterEach(() => { });
 
-  test('can instantiate a gameboard and build the ships correctly', () => {
+  test('can build the ships correctly', () => {
     const board = new Gameboard(false);
 
     // there should be 10 ships in total
@@ -40,7 +40,7 @@ describe('Gameboard Instantiation', () => {
     expect(board.ships[3][3].length).toBe(1);
   });
 
-  test('can instantiate a gameboard and build a complete grid (10 rows x 10 columns)', () => {
+  test('can build a complete grid (10 rows x 10 columns)', () => {
     const board = new Gameboard(false);
     expect(board.grid.length).toBe(10);
     board.grid.forEach((cols) => {

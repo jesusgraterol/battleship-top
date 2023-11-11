@@ -18,11 +18,6 @@ import '../stylesheets/app.css';
 
 
 // Scripts
-import Utilities from './modules/utilities';
-import Ship from './modules/ship';
-import Gameboard from './modules/gameboard';
-import Machine from './modules/machine';
-import Player from './modules/player';
 import Game from './modules/game';
 
 
