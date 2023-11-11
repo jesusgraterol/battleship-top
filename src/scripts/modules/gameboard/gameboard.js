@@ -46,6 +46,33 @@ class Gameboard {
   get grid() {
     return this.#grid;
   }
+
+
+
+
+  /* ********************
+   * Attacks Management *
+   ******************** */
+
+  receiveAttack(row, column) {
+    // process the attack
+    const { shipHit, shipSunk } = this.#grid.processAttack(row, column);
+
+    // if a ship was sunk, ensure the gameboard is not yet destroyed
+    if (shipSunk) {
+      // @TODO
+    }
+  }
+
+  /**
+   * Verifies if a given coordinate can be attacked by the opponent.
+   * @param {*} row
+   * @param {*} column
+   * @returns boolean
+   */
+  canReceiveAttack(row, column) {
+    return this.#grid.state[row][column].state === 'UNKNOWN';
+  }
 }
 
 

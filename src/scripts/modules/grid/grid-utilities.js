@@ -34,6 +34,29 @@ class GridUtilities {
   }
 
 
+  /**
+   * Given a coordinate and a grid (any state), it returns the list of valid cross adjacent
+   * coordinates.
+   * @param {*} r
+   * @param {*} c
+   * @param {*} g
+   * @returns object -> Array<{ row: number, column: number }>
+   */
+  static getCrossAdjacentCoordinates(r, c, g) {
+    // init the list coordinates
+    const adjacent = [];
+
+    // build the list of valid adjacent coordinates
+    if (g[r - 1] && g[r - 1][c + 1]) adjacent.push({ row: r - 1, column: c + 1 }); // >^
+    if (g[r + 1] && g[r + 1][c + 1]) adjacent.push({ row: r + 1, column: c + 1 }); // >v
+    if (g[r + 1] && g[r + 1][c - 1]) adjacent.push({ row: r + 1, column: c - 1 }); // <v
+    if (g[r - 1] && g[r - 1][c - 1]) adjacent.push({ row: r - 1, column: c - 1 }); // <^
+
+    // finally, return them
+    return adjacent;
+  }
+
+
 
 
 

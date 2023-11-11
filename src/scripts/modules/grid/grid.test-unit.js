@@ -3,8 +3,8 @@ import Ship from '../ship';
 import Grid from './grid';
 
 /**
- * Grid Build
- * Tests all the functionality related to building a grid
+ * Grid
+ * ...
  */
 describe('Grid', () => {
   beforeAll(() => { });
