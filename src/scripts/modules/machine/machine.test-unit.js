@@ -1,6 +1,10 @@
+import Player from '../player';
 import Machine from './machine';
 
-describe('Integration test suite template', () => {
+// Mock the renderer so no DOM errors are thrown
+jest.mock('../gameboard/gameboard-renderer');
+
+describe('Machine Attack Generation', () => {
   beforeAll(() => { });
 
   afterAll(() => { });
@@ -9,7 +13,15 @@ describe('Integration test suite template', () => {
 
   afterEach(() => { });
 
-  test.skip('can calculate 2 plus 2', () => {
-    expect(2 + 2).toBe(4);
+  test('can generate a valid attack and broadcast it on the player gameboard', () => {
+    const machine = new Machine();
+    const player = new Player();
+    const atk = machine.generateAttack(player.gameboard);
+
+    // execute the attack
+    player.gameboard.receiveAttack(atk.row, atk.column);
+
+    // confirm the state was updated
+    expect(player.gameboard.grid.state[atk.row][atk.column].state).not.toBe('UNKNOWN');
   });
 });

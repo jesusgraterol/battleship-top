@@ -22,6 +22,7 @@ class Machine {
    * @returns object -> { row: number, column: number }
    */
   generateAttack(playerGameboard) {
+    // @TODO: Implement intelligence when a ship part is hit
     return Machine.#generateRandomAttack(playerGameboard);
   }
 

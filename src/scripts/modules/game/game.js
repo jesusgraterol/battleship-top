@@ -84,6 +84,10 @@ class Game {
    * Game Life Cycle *
    ***************** */
 
+  /**
+   * Handles a player's attack as well as the impact it has on the overall gameflow.
+   * @param {*} attack
+   */
   async #onPlayerAttack(attack) {
     // process the attack on the machine's gameboard
     const playerAtkResult = this.#machine.gameboard.receiveAttack(attack.row, attack.column);
