@@ -106,7 +106,7 @@ class GameboardRenderer {
    */
   #renderGrid(gridState) {
     this.#gridEl.innerHTML = gridState.map(
-      (column, rowIndex) => GameboardRenderer.#buildGridRow(rowIndex, column),
+      (column, rowIndex) => this.#buildGridRow(rowIndex, column),
     ).join('');
   }
 
@@ -116,9 +116,9 @@ class GameboardRenderer {
    * @param {*} columns
    * @returns string
    */
-  static #buildGridRow(rowIndex, columns) {
+  #buildGridRow(rowIndex, columns) {
     return columns.reduce(
-      (accum, currentValue, columnIndex) => accum + GameboardRenderer.#buildGridTile(
+      (accum, currentValue, columnIndex) => accum + this.#buildGridTile(
         rowIndex,
         columnIndex,
         currentValue,
@@ -134,8 +134,8 @@ class GameboardRenderer {
    * @param {*} tileObj
    * @returns string
    */
-  static #buildGridTile(rowIndex, columnIndex, tileObj) {
-    const md = GameboardRenderer.#buildGridTileMetadata(rowIndex, columnIndex, tileObj);
+  #buildGridTile(rowIndex, columnIndex, tileObj) {
+    const md = this.#buildGridTileMetadata(rowIndex, columnIndex, tileObj);
     return `
       <div class="${md.classList}" data-coordinates="${md.coordinates}">
         ${md.innerContent}
@@ -154,9 +154,9 @@ class GameboardRenderer {
    * @param {*} tileObj
    * @returns object -> { classList: string, coordinates: string, innerContent: string }
    */
-  static #buildGridTileMetadata(rowIndex, columnIndex, tileObj) {
+  #buildGridTileMetadata(rowIndex, columnIndex, tileObj) {
     return {
-      classList: GameboardRenderer.#buildTileClassList(tileObj),
+      classList: this.#buildTileClassList(tileObj),
       coordinates: Utilities.encodeCoordinate(rowIndex, columnIndex),
       innerContent: GameboardRenderer.#buildTileInnerContent(tileObj),
     };
@@ -167,10 +167,17 @@ class GameboardRenderer {
    * @param {*} tileObj
    * @returns string
    */
-  static #buildTileClassList(tileObj) {
+  #buildTileClassList(tileObj) {
     let classList = 'tile';
     if (tileObj.state === 'UNKNOWN') classList += ' unknown';
-    if (tileObj.ship) classList += ' part';
+    if (tileObj.state === 'EMPTY') classList += ' empty';
+    if (tileObj.state === 'DERIVED_EMPTY') classList += ' empty derived';
+    if (tileObj.ship) {
+      const isSunk = tileObj.ship.isSunk();
+      if (tileObj.state === 'HIT' && !isSunk) classList += ' hit';
+      if (tileObj.state === 'HIT' && isSunk) classList += ' sunk';
+      if (this.#isPlayer && tileObj.state === 'UNKNOWN') classList += ' part';
+    }
     return classList;
   }
 
@@ -180,7 +187,12 @@ class GameboardRenderer {
    * @returns string
    */
   static #buildTileInnerContent(tileObj) {
-    return '';
+    switch (tileObj.state) {
+      case 'HIT':
+        return '<span class="md-icon">destruction</span>';
+      default:
+        return '';
+    }
   }
 }
 

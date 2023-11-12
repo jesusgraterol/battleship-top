@@ -156,7 +156,8 @@ body {
   height: 10px;
 }
 #app_content .grid-container .ships-states .ships-row .ship.sunk .part {
-  background-color: var(--accent-color);
+  background-color: var(--error-color);
+  opacity: 0.5;
 }
 
 
@@ -191,7 +192,13 @@ body {
 }
 #app_content .grid-container #machine_grid.grid .tile.unknown:hover {
   background-color: var(--app-background-color);
-  cursor: pointer;
+}
+
+#app_content .grid-container.disabled #machine_grid.grid .tile.unknown {
+  cursor: not-allowed;
+}
+#app_content .grid-container.disabled #machine_grid.grid .tile.unknown:hover {
+  background-color: white;
 }
 
 /* Empty */
@@ -215,12 +222,16 @@ body {
   cursor: not-allowed;
 }
 
+/* Sunk */
+#app_content .grid-container .grid .tile.sunk {
+  background-color: var(--error-color);
+  color:white;
+  cursor: not-allowed;
+}
+
 
 /* Part (Only players) */
-/* #app_content .grid-container #player_grid.grid .tile.part {
-  background-color: var(--primary-color);
-} */
-#app_content .grid-container .grid .tile.part {
+#app_content .grid-container #player_grid.grid .tile.part {
   background-color: var(--primary-color);
 }
 
@@ -228,7 +239,7 @@ body {
 
 /* Disabled Grid Container */
 #app_content .grid-container.disabled {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 

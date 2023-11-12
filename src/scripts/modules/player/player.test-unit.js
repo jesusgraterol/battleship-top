@@ -13,7 +13,7 @@ jest.mock('../gameboard/gameboard-renderer');
  */
 
 /**
- * Creates a fake target object with the getAttribute function that returns the 
+ * Creates a fake target object with the getAttribute function that returns the
  * provided returnValue.
  * @param {*} returnValue
  * @returns object
