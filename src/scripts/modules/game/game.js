@@ -3,7 +3,7 @@ import Player from '../player';
 
 /**
  * Game Class
- * ...
+ * Handles the game life cycle as well as the participants' input.
  */
 class Game {
   // the element of the machine's grid container
@@ -13,6 +13,9 @@ class Game {
   #machine;
 
   #player;
+
+  // the game's turn state
+  #playerTurn;
 
   // the game result elements
   #gameResultContainerEl;
@@ -44,6 +47,9 @@ class Game {
     // initialize the machine and the player
     this.#machine = new Machine();
     this.#player = new Player();
+
+    // set the current turn state
+    this.#playerTurn = true;
   }
 
 
@@ -59,8 +65,23 @@ class Game {
    * @param {*} evt
    */
   #onMachineGridClick(evt) {
-    console.log(evt.target.getAttribute('data-coordinates'));
+    if (this.#playerTurn) {
+      const attack = this.#player.decodeAttack(evt, this.#machine.gameboard);
+      if (attack) this.#onPlayerAttack(attack);
+    }
   }
+
+
+
+
+  /* *****************
+   * Game Life Cycle *
+   ***************** */
+
+  #onPlayerAttack(coordinates) {
+
+  }
+
 
 
 

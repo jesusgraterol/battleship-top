@@ -38,11 +38,13 @@ class Utilities {
 
   /**
    * Ensures that a given coordinate string is valid.
-   * @param {*} coordinateString
+   * @param {*} encoodedCoordinate
    * @returns boolean
    */
-  static isCoordinate(coordinateString) {
-    return /^r\d_c\d$/.test(coordinateString);
+  static isCoordinate(encoodedCoordinate) {
+    return typeof encoodedCoordinate === 'string'
+            && encoodedCoordinate.length
+            && /^r\d_c\d$/.test(encoodedCoordinate);
   }
 
 

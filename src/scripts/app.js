@@ -6,16 +6,8 @@
  * in the build.
  */
 
-
-
-
-
 // Stylesheets
 import '../stylesheets/app.css';
-
-
-
-
 
 // Scripts
 import Game from './modules/game';
