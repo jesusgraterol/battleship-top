@@ -1,6 +1,8 @@
+import Utilities from '../utilities';
 import GameboardRenderer from './gameboard-renderer';
 import Ship from '../ship';
 import Grid from '../grid';
+
 
 /**
  * Gameboard Class
@@ -61,6 +63,11 @@ class Gameboard {
    * @returns object -> { shipHit: boolean, shipSunk: boolean, gameboardDestroyed: boolean }
    */
   receiveAttack(row, column) {
+    // ensure an attack can be received
+    if (!this.canReceiveAttack(row, column)) {
+      throw new Error(`An attack cannot be received at: ${Utilities.encodeCoordinate(row, column)}.`);
+    }
+
     // process the attack
     const { shipHit, shipSunk } = this.#grid.processAttack(row, column);
 

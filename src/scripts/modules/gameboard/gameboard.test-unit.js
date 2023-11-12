@@ -33,6 +33,22 @@ describe('Attacks Management', () => {
     expect(result.gameboardDestroyed).toBe(false);
   });
 
+  test('cannot attack the same spot twice', () => {
+    // init an instance
+    const board = new Gameboard(true);
+
+    // calculate the attack coordinates
+    const atk = queryGrid(board.grid.state, 'EMPTY_UNKNOWN');
+
+    // ensure the current coordinate to be attackable
+    expect(board.canReceiveAttack(atk.row, atk.column)).toBe(true);
+    board.receiveAttack(atk.row, atk.column);
+    expect(board.canReceiveAttack(atk.row, atk.column)).toBe(false);
+
+    // attempt to attack the same spot
+    expect(() => board.receiveAttack(atk.row, atk.column)).toThrow('An attack cannot be received at:');
+  });
+
   test('can attack and completely destroy the board', () => {
     // init an instance
     const board = new Gameboard(true);
