@@ -57,6 +57,29 @@ class GridUtilities {
   }
 
 
+  /**
+   * Given a coordinate and a grid (any state), it returns the list of valid linear adjacent
+   * coordinates.
+   * @param {*} r
+   * @param {*} c
+   * @param {*} g
+   * @returns object -> Array<{ row: number, column: number }>
+   */
+  static getLinearAdjacentCoordinates(r, c, g) {
+    // init the list coordinates
+    const adjacent = [];
+
+    // build the list of valid adjacent coordinates
+    if (g[r - 1]) adjacent.push({ row: r - 1, column: c }); // ^
+    if (g[r][c + 1]) adjacent.push({ row: r, column: c + 1 }); // >
+    if (g[r + 1]) adjacent.push({ row: r + 1, column: c }); // v
+    if (g[r][c - 1]) adjacent.push({ row: r, column: c - 1 }); // <
+
+    // finally, return them
+    return adjacent;
+  }
+
+
 
 
 

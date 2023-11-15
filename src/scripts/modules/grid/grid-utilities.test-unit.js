@@ -10,6 +10,26 @@ import GridUtilities from './grid-utilities';
  */
 
 /**
+ * Given a list of coordinates representing the actual result and what is expected, it will encode
+ * them and compare them.
+ * @param {*} expectFunc
+ * @param {*} result
+ * @param {*} expected
+ */
+function compareExpectedVsResult(expectFunc, result, expected) {
+  // convert the coordinates into lists of encoded strings
+  const resultEnc = result.map((coord) => Utilities.encodeCoordinate(coord.row, coord.column));
+  const expectedEnc = expected.map((coord) => Utilities.encodeCoordinate(
+    coord.row,
+    coord.column,
+  ));
+
+  // ensure the two lists are identical
+  expectFunc(resultEnc.length).toBe(expectedEnc.length);
+  expectFunc(resultEnc.sort()).toEqual(expectedEnc.sort());
+}
+
+/**
  * Given a set of a coordinates and the expected result, it peforms a test on the
  * getAdjacentCoordinates function.
  * @param {*} expectFunc
@@ -22,16 +42,8 @@ function testGetAdjacentCoordinates(expectFunc, rowIndex, columnIndex, expectedR
   const grid = GridUtilities.buildBlankGrid();
   const adjacent = GridUtilities.getAdjacentCoordinates(rowIndex, columnIndex, grid);
 
-  // convert the coordinates into lists of encoded strings
-  const adjacentEnc = adjacent.map((coord) => Utilities.encodeCoordinate(coord.row, coord.column));
-  const expectedResultsEnc = expectedResults.map((coord) => Utilities.encodeCoordinate(
-    coord.row,
-    coord.column,
-  ));
-
-  // ensure the two lists are identical
-  expectFunc(adjacentEnc.length).toBe(expectedResultsEnc.length);
-  expectFunc(adjacentEnc.sort()).toEqual(expectedResultsEnc.sort());
+  // perform the test
+  compareExpectedVsResult(expectFunc, adjacent, expectedResults);
 }
 
 /**
@@ -47,16 +59,25 @@ function testGetCrossAdjacentCoordinates(expectFunc, rowIndex, columnIndex, expe
   const grid = GridUtilities.buildBlankGrid();
   const adjacent = GridUtilities.getCrossAdjacentCoordinates(rowIndex, columnIndex, grid);
 
-  // convert the coordinates into lists of encoded strings
-  const adjacentEnc = adjacent.map((coord) => Utilities.encodeCoordinate(coord.row, coord.column));
-  const expectedResultsEnc = expectedResults.map((coord) => Utilities.encodeCoordinate(
-    coord.row,
-    coord.column,
-  ));
+  // perform the test
+  compareExpectedVsResult(expectFunc, adjacent, expectedResults);
+}
 
-  // ensure the two lists are identical
-  expectFunc(adjacentEnc.length).toBe(expectedResultsEnc.length);
-  expectFunc(adjacentEnc.sort()).toEqual(expectedResultsEnc.sort());
+/**
+ * Given a set of coordinates and the expected result, it performs a test on the
+ * getLinearAdjacentCoordinates function.
+ * @param {*} expectFunc
+ * @param {*} rowIndex
+ * @param {*} columnIndex
+ * @param {*} expectedResults
+ */
+function testGetLinearAdjacentCoordinates(expectFunc, rowIndex, columnIndex, expectedResults) {
+  // init values
+  const grid = GridUtilities.buildBlankGrid();
+  const adjacent = GridUtilities.getLinearAdjacentCoordinates(rowIndex, columnIndex, grid);
+
+  // perform the test
+  compareExpectedVsResult(expectFunc, adjacent, expectedResults);
 }
 
 
@@ -161,6 +182,46 @@ describe('Grid Scanning Utilities', () => {
     testGetCrossAdjacentCoordinates(expect, 9, 4, [
       { row: 8, column: 3 },
       { row: 8, column: 5 },
+    ]);
+  });
+
+
+
+
+
+  /* **********************************
+   * Get Linear Adjacement Coordinates *
+   ********************************** */
+
+  test('can identify the linear adjacent grid tiles for a given coordinate (1: r4_c4)', () => {
+    testGetLinearAdjacentCoordinates(expect, 4, 4, [
+      { row: 3, column: 4 },
+      { row: 4, column: 5 },
+      { row: 5, column: 4 },
+      { row: 4, column: 3 },
+    ]);
+  });
+
+  test('can identify the linear adjacent grid tiles for a given coordinate (2: r0_c0)', () => {
+    testGetLinearAdjacentCoordinates(expect, 0, 0, [
+      { row: 0, column: 1 },
+      { row: 1, column: 0 },
+    ]);
+  });
+
+  test('can identify the linear adjacent grid tiles for a given coordinate (3: r0_c4)', () => {
+    testGetLinearAdjacentCoordinates(expect, 0, 4, [
+      { row: 0, column: 5 },
+      { row: 1, column: 4 },
+      { row: 0, column: 3 },
+    ]);
+  });
+
+  test('can identify the linear adjacent grid tiles for a given coordinate (4: r9_c4)', () => {
+    testGetLinearAdjacentCoordinates(expect, 9, 4, [
+      { row: 9, column: 3 },
+      { row: 8, column: 4 },
+      { row: 9, column: 5 },
     ]);
   });
 });
