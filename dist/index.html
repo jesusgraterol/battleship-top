@@ -25,57 +25,57 @@
     <div id="app_container">
 
       <!-- App Header -->
-      <div id="app_header">
+      <header id="app_header">
         <p id="app_title">Battleship</p>
         <p id="app_subtitle">Destroy your enemies and dominate the sea!</p>
-      </div>
+      </header>
       
 
       <!-- App Content -->
-      <div id="app_content">
+      <main id="app_content">
 
         <!-- Player -->
-        <div id="player_grid_container" class="grid-container">
+        <article id="player_grid_container" class="grid-container">
 
           <!-- Ships' States-->
-          <div class="ships-states">
+          <aside class="ships-states">
             <p>Player</p>
             <div id="player_ships_states"> <!-- Handled by gameboard-renderer.js --> </div>
-          </div>
+          </aside>
 
           <!-- Grid -->
-          <div id="player_grid" class="grid"> <!-- Handled by gameboard-renderer.js --> </div>
+          <section id="player_grid" class="grid"> <!-- Handled by gameboard-renderer.js --> </section>
 
-        </div>
+        </article>
 
         <div class="spacer"></div>
 
         <!-- Machine -->
-        <div id="machine_grid_container" class="grid-container">
+        <article id="machine_grid_container" class="grid-container">
 
           <!-- Grid -->
-          <div id="machine_grid" class="grid"> <!-- Handled by gameboard-renderer.js --> </div>
+          <section id="machine_grid" class="grid"> <!-- Handled by gameboard-renderer.js --> </section>
 
           <!-- Ships' States-->
-          <div class="ships-states">
+          <aside class="ships-states">
             <p>Machine</p>
             <div id="machine_ships_states"> <!-- Handled by gameboard-renderer.js --> </div>
-          </div>
+          </aside>
 
-        </div>
+        </article>
 
-      </div>
+      </main>
 
 
       <!-- App Footer -->
-      <div id="app_footer">
+      <footer id="app_footer">
         <a  href="https://en.wikipedia.org/wiki/Battleship_(game)" 
             target="_blank" 
             rel="noopener noreferrer">Rules</a>
         <a  href="https://github.com/jesusgraterol/battleship-top" 
             target="_blank" 
             rel="noopener noreferrer">Source Code</a>
-      </div>
+      </footer>
 
     </div>
 
