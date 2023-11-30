@@ -1,1 +1,91 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Battleship</title><link rel="icon" type="image/x-icon" href="./favicon.ico"><meta name="theme-color" content="#000000"><script defer="defer" src="bundle.js"></script></head><body><div id="app_container"><header id="app_header"><p id="app_title">Battleship</p><p id="app_subtitle">Destroy your enemies and dominate the sea!</p></header><main id="app_content"><article id="player_grid_container" class="grid-container"><aside class="ships-states"><p>Player</p><div id="player_ships_states"></div></aside><section id="player_grid" class="grid"></section></article><div class="spacer"></div><article id="machine_grid_container" class="grid-container"><section id="machine_grid" class="grid"></section><aside class="ships-states"><p>Machine</p><div id="machine_ships_states"></div></aside></article></main><footer id="app_footer"><a href="https://en.wikipedia.org/wiki/Battleship_(game)" target="_blank" rel="noopener noreferrer">Rules</a> <a href="https://github.com/jesusgraterol/battleship-top" target="_blank" rel="noopener noreferrer">Source Code</a></footer></div><div id="game_result_container"><p id="game_result_title"></p><button id="play_again_button" class="btn">PLAY AGAIN</button></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <!-- Charset -->
+    <meta charset="UTF-8">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>Battleship</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#000000">
+
+  <script defer src="bundle.js"></script></head>
+  <body>
+
+    <!-- App Container -->
+    <div id="app_container">
+
+      <!-- App Header -->
+      <header id="app_header">
+        <p id="app_title">Battleship</p>
+        <p id="app_subtitle">Destroy your enemies and dominate the sea!</p>
+      </header>
+      
+
+      <!-- App Content -->
+      <main id="app_content">
+
+        <!-- Player -->
+        <article id="player_grid_container" class="grid-container">
+
+          <!-- Ships' States-->
+          <aside class="ships-states">
+            <p>Player</p>
+            <div id="player_ships_states"> <!-- Handled by gameboard-renderer.js --> </div>
+          </aside>
+
+          <!-- Grid -->
+          <section id="player_grid" class="grid"> <!-- Handled by gameboard-renderer.js --> </section>
+
+        </article>
+
+        <div class="spacer"></div>
+
+        <!-- Machine -->
+        <article id="machine_grid_container" class="grid-container">
+
+          <!-- Grid -->
+          <section id="machine_grid" class="grid"> <!-- Handled by gameboard-renderer.js --> </section>
+
+          <!-- Ships' States-->
+          <aside class="ships-states">
+            <p>Machine</p>
+            <div id="machine_ships_states"> <!-- Handled by gameboard-renderer.js --> </div>
+          </aside>
+
+        </article>
+
+      </main>
+
+
+      <!-- App Footer -->
+      <footer id="app_footer">
+        <a  href="https://en.wikipedia.org/wiki/Battleship_(game)" 
+            target="_blank" 
+            rel="noopener noreferrer">Rules</a>
+        <a  href="https://github.com/jesusgraterol/battleship-top" 
+            target="_blank" 
+            rel="noopener noreferrer">Source Code</a>
+      </footer>
+
+    </div>
+
+
+    <!-- Game Result -->
+    <div id="game_result_container">
+      <p id="game_result_title"><!-- Handled by game.js --></p>
+      <button id="play_again_button" class="btn">PLAY AGAIN</button>
+    </div>
+
+  </body>
+
+</html>
